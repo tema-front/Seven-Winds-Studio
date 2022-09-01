@@ -1,0 +1,326 @@
+*
+    padding: 0
+    margin: 0
+    box-sizing: border-box
+
+button
+    cursor: pointer
+
+html, body, #root,
+    height: 100%
+
+span, p, th
+    font-family: sans-serif
+
+.header
+    background-color: #27272A
+    width: 100%
+    padding: 0 24px
+    display: flex
+    justify-content: space-between
+    align-items: center
+    border-bottom: 1px solid #414144
+    &-wrp
+        display: flex
+    &-menu
+        &-btn
+            background-color: transparent
+            border: none
+            margin: 0 0 0 27px
+            &:first-child
+                margin: 0
+
+    &-management
+        padding: 14px 0
+
+    &-navigation
+        margin: 0 0 0 31px
+        &-item
+            border: none
+            background-color: transparent
+            padding: 15px 3.5px
+            color: #A1A1AA
+            font-size: 14px
+            line-height: 16px
+            margin: 0 0 0 28px
+            &:first-child
+                margin: 0
+            &.actived
+                color: #FFFFFF
+                border-bottom: 2px solid #FFFFFF
+
+    &-profile
+        display: flex
+        align-items: center
+        &-name
+            font-size: 14px
+            line-height: 16px
+            margin: 0 0 0 8px
+            color: #FFFFFF
+        &-btn
+            background-color: transparent
+            border: none
+            margin: 0 0 0 6px
+
+.content
+    min-height: calc( 100% - 49px)
+    display: flex
+
+.navbar
+    max-width: 234px
+    width: 100%
+    border-right: 1px solid #414144
+    background-color: #27272A
+    &-btn
+        width: 100%
+        background-color: transparent
+        border: none
+        display: flex
+        justify-content: space-between
+        align-items: center
+        padding: 8px 20px
+        border-bottom: 1px solid #414144
+
+        &-wrp
+            display: flex
+            flex-direction: column
+            text-align: start
+            color: #A1A1AA
+        &-title
+            font-size: 14px
+            line-height: 16px
+        &-subtitle
+            font-size: 10px
+            line-height: 12px
+
+    &-list
+        &-item
+            padding: 7.75px 22.75px
+            font-size: 14px
+            line-height: 16px
+            color: #FFFFFF
+            display: flex
+            cursor: pointer
+            align-items: center
+            &-name
+                margin: 0 0 0 16.75px
+            &:nth-child(5)
+                background-color: #A1A1AA
+
+tr, th
+    display: block
+
+// .line-length
+//     position: relative
+//     &::after
+//         content: ""
+//         position: absolute
+//         top: 23px
+//         left: 40px
+//         border-left: 1px solid #ffffff
+//         height: 64px
+//         width: 11px
+
+// .line-length-1
+//     position: relative
+//     &::after
+//         content: ""
+//         position: absolute
+//         top: 23px
+//         left: 40px
+//         border-left: 1px solid #ffffff
+//         height: 64px
+//         width: 11px
+// .line-length-2
+//     position: relative
+//     &::after
+//         content: ""
+//         position: absolute
+//         top: 23px
+//         left: 40px
+//         border-left: 1px solid #ffffff
+//         height: 64px * 2
+//         width: 11px
+
+// .line-length-3
+//     position: relative
+//     &::after
+//         content: ""
+//         position: absolute
+//         top: 23px
+//         left: 40px
+//         border-left: 1px solid #ffffff
+//         height: 64px * 3
+//         width: 11px
+
+.table
+    background-color: #202124
+    width: 100%
+    height: 100%
+    padding: 0 10px
+
+    &-wrp
+        display: flex
+        flex-direction: column
+        width: 100%
+
+    &-heading
+        width: 100%
+        background-color: #27272A
+        height: fit-content
+        &-txt
+            display: block
+            border-right: 1px solid #414144
+            width: fit-content
+            padding: 12px 15px
+            font-size: 18px
+            line-height: 21px
+            color: #FFFFFF
+
+    &-titles-item
+        color: #A1A1AA!important
+
+    &-row
+        padding: 10px 0
+        &:last-child
+            border-bottom: none
+
+    &-titles, &-row
+        border-bottom: 1px solid #414144
+
+        display: flex
+
+        &-item
+            width: 100%
+            max-width: 200px
+            padding: 12px
+            text-align: start
+            font-size: 14px
+            line-height: 18px
+            font-weight: 400
+            letter-spacing: 0.1px
+            color: #FFFFFF
+
+            &-line
+                position: absolute
+                top: 22px
+                left: 0px
+                border: none
+                height: 0px
+                background-color: #ffffff
+                width: 1px
+
+            &.parent
+                position: relative
+
+            &.nesting-0
+                position: relative
+
+            &.nesting-1
+                position: relative
+                padding-left: calc( 12px + 20px * 1)
+                &::before
+                    content: ""
+                    position: absolute
+                    bottom: 22px
+                    left: 20px
+                    border-bottom: 1px solid #ffffff
+                    height: 64px
+                    width: 11px
+            &.nesting-2
+                position: relative
+                padding-left: calc( 12px + 20px * 2)
+                &::before
+                    content: ""
+                    position: absolute
+                    bottom: 22px
+                    left: 20px * 2
+                    border-bottom: 1px solid #ffffff
+                    height: 64px
+                    width: 11px
+            &.nesting-3
+                position: relative
+                padding-left: calc( 12px + 20px * 3)
+                &::before
+                    content: ""
+                    position: absolute
+                    bottom: 22px
+                    left: 20px * 3
+                    border-bottom: 1px solid #ffffff
+                    height: 64px
+                    width: 11px
+            &.nesting-4
+                position: relative
+                padding-left: calc( 12px + 20px * 4)
+                &::before
+                    content: ""
+                    position: absolute
+                    bottom: 22px
+                    left: 20px * 4
+                    border-bottom: 1px solid #ffffff
+                    height: 64px
+                    width: 11px
+
+            &-menu
+                display: none
+                background: #414144
+                border-radius: 6px
+                padding: 6px
+                position: absolute
+                top: -6px
+                left: -6px
+                cursor: auto
+
+                &:hover, & .table-row-item-btn:hover
+                    display: flex
+
+                & .table-row-item-btn
+                    margin: 0 0 0 8px
+
+                    &:first-child
+                        margin: 0
+
+            &-btn
+                border: none
+                background-color: transparent
+                position: relative
+
+                & svg
+                    position: relative
+                    z-index: 5
+                    background-color: #202124
+                &-line
+                    height: 55px
+                    background-color: #ffffff
+                    border: none
+                    width: 1px
+                    position: absolute
+                    top: 5px
+                    right: 50%
+                    z-index: 3
+
+                &.disabled
+                    pointer-events: none
+
+                &:active
+
+                    & > .table-row-item-menu
+                        display: flex
+
+            &.editable
+                padding: 0 12px
+                & input
+                    width: 100%
+                    border: 1px solid #414144
+                    border-radius: 6px
+                    padding: 10px
+                    background-color: transparent
+                    font-size: 14px
+                    line-height: 18px
+                    letter-spacing: 0.1px
+                    color: #FFFFFF
+
+            &:nth-child(1)
+                max-width: 110px
+            &:nth-child(2)
+                max-width: 757px
