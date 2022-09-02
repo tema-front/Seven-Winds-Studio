@@ -1,5 +1,7 @@
 import { FC, useEffect, useRef, useState } from "react";
+import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
+import { RootState } from "../store";
 import { recalculation, saveRow } from "../store/table/actions";
 import { RowData } from "../types/types";
 import { NestingLine } from "./NestingLine";
@@ -12,6 +14,7 @@ interface EditableRowProps {
 
 // Компонент редактируемой строки
 export const EditableRow: FC<EditableRowProps> = ({ row, nesting, index }) => {
+    const tableList = useSelector((state: RootState) => state.stateRows.tableList);
     const [title, setTitle] = useState<string>('');
     const [unit, setUnit] = useState<string>('');
     const [quantity, setQantity] = useState<number>(0);
@@ -45,7 +48,8 @@ export const EditableRow: FC<EditableRowProps> = ({ row, nesting, index }) => {
         if ((editableRow.type === "row" && (!title || !unit || !quantity || !unitPrice)) || (editableRow.type === "level" && !title)) return;
         dispatch(saveRow(editableRow.id, title, unit, quantity, unitPrice));
         dispatch(recalculation(editableRow.parent));
-
+        const parentIndex: number = tableList.findIndex(row => row.id === editableRow.parent);
+        if (tableList[parentIndex].parent) dispatch(recalculation(tableList[parentIndex].parent));
         setTitle("");
         setUnit("");
         setQantity(0);

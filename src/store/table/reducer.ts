@@ -62,31 +62,6 @@ export const tableReducer = (state = initialState, { type, payload }: tableActio
                 }
                 ]
             }
-
-            // let newTableList: RowData[] = [...state.tableList];
-            // const parentIndex: number = state.tableList.findIndex(row => row.id === payload.parentId);
-            // let newTableData: RowData[] = [...state.tableList];
-
-            // if (!Array.isArray(newTableData[parentIndex].children)) newTableData[parentIndex].children = []
-            // newTableData[parentIndex].children?.push(payload.id);
-
-            // return {
-            //     ...state,
-            //     tableList: [...newTableList,
-            //     {
-            //         title: "",
-            //         unit: "",
-            //         quantity: 0,
-            //         unitPrice: 0,
-            //         price: 0,
-            //         parent: payload.parentId,
-            //         children: null,
-            //         type: payload.rowType,
-            //         id: payload.id,
-            //         nesting: payload.nesting
-            //     }
-            //     ]
-            // }
         }
 
         case TableActionTypes.SAVE_ROW: {
@@ -138,6 +113,7 @@ export const tableReducer = (state = initialState, { type, payload }: tableActio
 
                 currentParentIndex = storage.findIndex((v) => v.id === currentParent.parent)
             } while (currentParentIndex !== -1)
+            console.log(changedRows);
 
             return {
                 ...state,
