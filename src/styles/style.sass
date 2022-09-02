@@ -110,54 +110,11 @@ span, p, th
 tr, th
     display: block
 
-// .line-length
-//     position: relative
-//     &::after
-//         content: ""
-//         position: absolute
-//         top: 23px
-//         left: 40px
-//         border-left: 1px solid #ffffff
-//         height: 64px
-//         width: 11px
-
-// .line-length-1
-//     position: relative
-//     &::after
-//         content: ""
-//         position: absolute
-//         top: 23px
-//         left: 40px
-//         border-left: 1px solid #ffffff
-//         height: 64px
-//         width: 11px
-// .line-length-2
-//     position: relative
-//     &::after
-//         content: ""
-//         position: absolute
-//         top: 23px
-//         left: 40px
-//         border-left: 1px solid #ffffff
-//         height: 64px * 2
-//         width: 11px
-
-// .line-length-3
-//     position: relative
-//     &::after
-//         content: ""
-//         position: absolute
-//         top: 23px
-//         left: 40px
-//         border-left: 1px solid #ffffff
-//         height: 64px * 3
-//         width: 11px
-
 .table
     background-color: #202124
     width: 100%
     height: 100%
-    padding: 0 10px
+    padding: 0 10px 100px 10px
 
     &-wrp
         display: flex
@@ -249,17 +206,6 @@ tr, th
                     border-bottom: 1px solid #ffffff
                     height: 64px
                     width: 11px
-            &.nesting-4
-                position: relative
-                padding-left: calc( 12px + 20px * 4)
-                &::before
-                    content: ""
-                    position: absolute
-                    bottom: 22px
-                    left: 20px * 4
-                    border-bottom: 1px solid #ffffff
-                    height: 64px
-                    width: 11px
 
             &-menu
                 display: none
@@ -281,6 +227,7 @@ tr, th
                         margin: 0
 
             &-btn
+                width: fit-content
                 border: none
                 background-color: transparent
                 position: relative
