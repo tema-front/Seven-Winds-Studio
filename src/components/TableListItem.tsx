@@ -12,16 +12,17 @@ interface TableListItemProps {
 }
 
 // Комопнент для отображения строки
-// Работает так: если у строки нет заголовка, значит это новая созданная строка и она должна открыться в режиме редактирования (Компонент EditableRow)
+// Работает так: если у строки присутствует флаг editable,  
+// который означает, что это редактируемая строка или новая созданная строка и она должна открыться в режиме редактирования (Компонент EditableRow)
 // Иначе отображается готовая строка (Компонент ReadyRow)
 export const TableListItem: FC<TableListItemProps> = ({ row, nesting, index }) => {
     const tableList = useSelector((state: RootState) => state.stateRows.tableList);
 
     return (
         <>
-            {row.title
-                ? <ReadyRow row={row} nesting={nesting} key={row.id} />
-                : <EditableRow row={row} nesting={nesting} index={index} key={row.id} />
+            {row.editable
+                ? <EditableRow row={row} nesting={nesting} index={index} key={row.id} />
+                : <ReadyRow row={row} nesting={nesting} key={row.id} />
             }
             {row.children?.length && row.children.map(
                 (childId, index) => <TableListItem row={tableList.filter(item => item.id === childId)[0]} nesting={nesting + 1} index={index + 1} key={index} />

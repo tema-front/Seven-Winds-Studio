@@ -24,6 +24,10 @@ export const EditableRow: FC<EditableRowProps> = ({ row, nesting, index }) => {
 
     useEffect(() => {
         if (inputRef.current) inputRef.current.focus()
+        setTitle(row.title);
+        setUnit(row.unit);
+        setQantity(row.quantity);
+        setUnitPrice(row.unitPrice);
     }, [])
 
     const titleChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -47,9 +51,11 @@ export const EditableRow: FC<EditableRowProps> = ({ row, nesting, index }) => {
         e.preventDefault();
         if ((editableRow.type === "row" && (!title || !unit || !quantity || !unitPrice)) || (editableRow.type === "level" && !title)) return;
         dispatch(saveRow(editableRow.id, title, unit, quantity, unitPrice));
-        dispatch(recalculation(editableRow.parent));
-        const parentIndex: number = tableList.findIndex(row => row.id === editableRow.parent);
-        if (tableList[parentIndex].parent) dispatch(recalculation(tableList[parentIndex].parent));
+        if (editableRow.parent) {
+            dispatch(recalculation(editableRow.parent));
+            const parentIndex: number = tableList.findIndex(row => row.id === editableRow.parent);
+            if (tableList[parentIndex].parent) dispatch(recalculation(tableList[parentIndex].parent));
+        }
         setTitle("");
         setUnit("");
         setQantity(0);
@@ -86,14 +92,14 @@ export const EditableRow: FC<EditableRowProps> = ({ row, nesting, index }) => {
                 <th className="table-row-item editable">
                     {row.type === "row" &&
                         <form onSubmit={e => saveRowHandler(e, row)}>
-                            <input value={quantity} onChange={quantityChangeHandler} type="number" placeholder={`1 200`} />
+                            <input value={quantity ? quantity : ""} onChange={quantityChangeHandler} type="number" placeholder={`1 200`} />
                         </form>
                     }
                 </th>
                 <th className="table-row-item editable">
                     {row.type === "row" &&
                         <form onSubmit={e => saveRowHandler(e, row)}>
-                            <input value={unitPrice} onChange={unitPriceChangeHandler} type="number" placeholder={`850`} />
+                            <input value={unitPrice ? unitPrice : ""} onChange={unitPriceChangeHandler} type="number" placeholder={`850`} />
                         </form>
                     }
                 </th>

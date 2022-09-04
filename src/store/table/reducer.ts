@@ -11,6 +11,7 @@ const initialState: tableState = {
             parent: null,
             children: null,
             type: "level",
+            editable: true,
             id: 154543543,
             nesting: 1
         }
@@ -36,6 +37,7 @@ export const tableReducer = (state = initialState, { type, payload }: tableActio
                     parent: null,
                     children: null,
                     type: payload.rowType,
+                    editable: true,
                     id: payload.id,
                     nesting: payload.nesting
                 }
@@ -57,6 +59,7 @@ export const tableReducer = (state = initialState, { type, payload }: tableActio
                     parent: payload.parentId,
                     children: null,
                     type: payload.rowType,
+                    editable: true,
                     id: payload.id,
                     nesting: payload.nesting
                 }
@@ -70,6 +73,7 @@ export const tableReducer = (state = initialState, { type, payload }: tableActio
             let newTableList: RowData[] = [...state.tableList];
             newTableList[rowIndex] = {
                 ...newTableList[rowIndex],
+                editable: false,
                 title: payload.title,
                 unit: payload.unit,
                 quantity: payload.quantity,
@@ -86,7 +90,7 @@ export const tableReducer = (state = initialState, { type, payload }: tableActio
         case TableActionTypes.EDIT_ROW: {
             let newTableList: RowData[] = [...state.tableList];
             const rowIndex: number = state.tableList.findIndex(row => row.id === payload.rowId);
-            newTableList[rowIndex].title = "";
+            newTableList[rowIndex].editable = true;
 
             return {
                 ...state,
@@ -113,7 +117,6 @@ export const tableReducer = (state = initialState, { type, payload }: tableActio
 
                 currentParentIndex = storage.findIndex((v) => v.id === currentParent.parent)
             } while (currentParentIndex !== -1)
-            console.log(changedRows);
 
             return {
                 ...state,

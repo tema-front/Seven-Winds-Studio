@@ -8,6 +8,7 @@ export interface NewRowData {
     parent: number | null
     children: number[] | null // массив id дочерних строк
     type: 'level' | 'row'
+    editable: false | true // флаг, служит для определения состояния строки
     nesting: number // уровень вложенности строки в таблице (нужно для вёрстки)
 }
 
